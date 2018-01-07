@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>very nice</title>
+	<script src="StyledString.js"></script>
+	<!-- <script src="unitTest.js"></script> -->
+</head>
+<body>
+	<p id="unstyledStr"></p>
+	<p><span style="color: red">This </span><span style="color: red; font-size: 2em; font-weight: bold;">is </span><span style="font-size: 2em; font-weight: bold; font-style: italic;">jus</span><span style="font-size: 2em; font-weight: bold; font-style: italic; text-decoration: underline;">t </span><span style="font-size: 2em; font-weight: bold; text-decoration: underline;">a </span><span style="font-size: 2em; text-decoration: underline;">test</span> <span style="text-decoration: underline;">st</span>ri<span style="text-decoration: underline;">ng.</span></p>
+	<p id="para"></p>
+
+	<script>
+		let stylingObj1 = {
+			styleType: 'color',
+			styleValue: 'red',
+		}
+		let stylingObj7 = {
+			styleType: 'color',
+			styleValue: 'blue',
+		}
+		let stylingObj2 = {
+			styleType: 'font-weight',
+			styleValue: 'bold',
+		}
+		let stylingObj3 = {
+			styleType: 'font-style',
+			styleValue: 'italic',
+		}
+		let stylingObj4 = {
+			styleType: 'text-decoration',
+			styleValue: 'underline',
+		}
+		let stylingObj5 = {
+			styleType: 'text-decoration',
+			styleValue: 'line-through',
+		}
+		let stylingObj6 = {
+			styleType: 'font-size',
+			styleValue: '2em',
+		}
+		let stylingObjArr = [stylingObj1, stylingObj2, stylingObj3];
+		let styledStr = new StyledString('This is just a test string.');
+		styledStr.style(stylingObj1, 0, 7);
+		styledStr.style(stylingObj2, 5, 15);
+		styledStr.style(stylingObj3, 8, 12);
+		styledStr.style(stylingObj4, 11, 19);
+		styledStr.style(stylingObj4, 20, 22);
+		styledStr.style(stylingObj4, 24, 27);
+		styledStr.style(stylingObj6, 5, 19);
+
+		styledStr.insert(' new substring ', 23);
+		styledStr.style(stylingObj7, 19, 32);
+
+		let para = document.getElementById('para');
+		para.innerHTML = styledStr.innerHTML;
+
+		let unpara = document.getElementById("unstyledStr");
+		unpara.textContent = styledStr.textContent;
+	</script>
+</body>
+</html>
